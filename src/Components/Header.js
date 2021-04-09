@@ -24,18 +24,18 @@ const Header = ({ location: { pathname } }) => (
   <>
     {console.log(pathname)}
     <Ul>
-      <List current={pathname === "/"}>
-        <Link to="/">Home</Link>
-      </List>
-      <List current={pathname === "/tv"}>
-        <Link to="/tv">TV</Link>
-      </List>
-      <List current={pathname === "/search"}>
-        <Link to="/search">Search</Link>
-      </List>
-      <List current={pathname === "/detail"}>
-        <Link to="/detail">Detail</Link>
-      </List>
+      <Link to="/">
+        <List current={pathname === "/"}>Home</List>
+      </Link>
+      <Link to="/tv">
+        <List current={pathname === "/tv"}>tv</List>
+      </Link>
+      <Link to="/search">
+        <List current={pathname === "/search"}>Search</List>
+      </Link>
+      <Link to="/detail">
+        <List current={pathname === "/detail"}>Detail</List>
+      </Link>
     </Ul>
   </>
 );
