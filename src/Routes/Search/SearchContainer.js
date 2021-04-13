@@ -1,16 +1,25 @@
 import React, { Component } from "react";
-import SearchPresenter from "Routes/Search/SearchPresenter";
+import SearchPresenter from "./SearchPresenter";
 
 class SearchContainer extends Component {
   state = {
     searchMovie: null,
     searchTV: null,
-    isLoading: true,
-    error: false
+    searchTerm: "",
+    isLoading: false,
+    error: null
   };
 
   render() {
-    const { searchMovie, searchTV, isLoading, error } = this.state;
-    return <SearchPresenter searchMovie={searchMovie} searchTV={searchTV} />;
+    const { searchMovie, searchTV, searchTerm, isLoading, error } = this.state;
+    return (
+      <SearchPresenter
+        searchMovie={searchMovie}
+        searchTV={searchTV}
+        searchTerm={searchTerm}
+        isLoading={isLoading}
+        error={error}
+      />
+    );
   }
 }

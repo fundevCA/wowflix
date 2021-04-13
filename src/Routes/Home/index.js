@@ -1,4 +1,4 @@
 import React from "react";
-import HomePresenter from "components/HomePresenter";
+import HomePresenter from "./HomePresenter";
 
-export default <HomePresenter />;
+export default HomePresenter;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HomePresenter from "components/HomePresenter";
+import HomePresenter from "./HomePresenter";
 
 class HomeContainer extends Component {
   state = {
@@ -7,11 +7,19 @@ class HomeContainer extends Component {
     popular: null,
     topRated: null,
     upcoming: null,
-    isLoading: true
+    isLoading: true,
+    error: null
   };
 
   render() {
-    const { nowPlaying, popular, topRated, upcoming, isLoading } = this.state;
+    const {
+      nowPlaying,
+      popular,
+      topRated,
+      upcoming,
+      isLoading,
+      error
+    } = this.state;
     return (
       <HomePresenter
         nowPlaying={nowPlaying}
@@ -19,6 +27,7 @@ class HomeContainer extends Component {
         topRated={topRated}
         upcoming={upcoming}
         isLoading={isLoading}
+        error={error}
       />
     );
   }
