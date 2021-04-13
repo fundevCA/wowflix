@@ -22,7 +22,6 @@ const List = styled.li`
 
 const Header = ({ location: { pathname } }) => (
   <>
-    {console.log(pathname)}
     <Ul>
       <Link to="/">
         <List current={pathname === "/"}>Home</List>
