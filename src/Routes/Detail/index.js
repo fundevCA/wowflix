@@ -1,4 +1,4 @@
 import React from "react";
-import DetailPresenter from "Routes/Detail/DetailPresenter";
+import DetailContainer from "./DetailContainer";
 
-export default <DetailPresenter />;
+export default DetailContainer;

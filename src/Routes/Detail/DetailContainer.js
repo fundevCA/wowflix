@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DetailPresenter from "components/DetailPresenter";
+import DetailPresenter from "./DetailPresenter";
 
 class DetailContainer extends Component {
   state = {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchPresenter from "Routes/Search/SearchPresenter";
+import SearchPresenter from "./SearchPresenter";
 
 class SearchContainer extends Component {
   state = {
@@ -14,3 +14,4 @@ class SearchContainer extends Component {
     return <SearchPresenter searchMovie={searchMovie} searchTV={searchTV} />;
   }
 }
+export default SearchContainer;
