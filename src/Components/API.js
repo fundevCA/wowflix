@@ -8,7 +8,7 @@ const base = axios.create({
   }
 });
 
-const movieAPI = {
+export const movieAPI = {
   nowPlaying: () => base.get("movie/now_playing"),
   popular: () => base.get("movie/popular"),
   topRated: () => base.get("movie/top_rated"),
@@ -27,7 +27,7 @@ const movieAPI = {
     })
 };
 
-const tvAPI = {
+export const tvAPI = {
   airingToday: () => base.get("tv/airing_today"),
   popular: () => base.get("tv/popular"),
   topRated: () => base.get("tv/top_rated"),
@@ -39,5 +39,3 @@ const tvAPI = {
       }
     })
 };
-
-export default { movieAPI, tvAPI };
