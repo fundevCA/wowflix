@@ -19,7 +19,7 @@ export const movieAPI = {
         append_to_response: "videos"
       }
     }),
-  search: () =>
+  searchMovie: () =>
     base.get("search/movie", {
       params: {
         query: keyword => encodeURIComponent(keyword)
@@ -32,7 +32,7 @@ export const tvAPI = {
   popular: () => base.get("tv/popular"),
   topRated: () => base.get("tv/top_rated"),
   detail: id => base.get(`tv/${id}`),
-  search: () =>
+  searchTV: () =>
     base.get("search/tv", {
       params: {
         query: keyword => encodeURIComponent(keyword)
