@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import DetailPresenter from "./DetailPresenter";
+import DetailPresenter from "components/DetailPresenter";
 
 class DetailContainer extends Component {
   state = {
     detail: null,
     isLoading: true,
-    error: null
+    error: false
   };
 
   render() {

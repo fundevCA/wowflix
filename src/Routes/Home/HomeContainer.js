@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import HomePresenter from "./HomePresenter";
 import { movieAPI } from "../../Components/API";
+=======
+import HomePresenter from "components/HomePresenter";
+>>>>>>> parent of 438f4bf... Setting Container and Presenter for TV
 
 class HomeContainer extends Component {
   state = {
@@ -8,8 +12,7 @@ class HomeContainer extends Component {
     popular: null,
     topRated: null,
     upcoming: null,
-    isLoading: true,
-    error: null
+    isLoading: true
   };
 
   async componentDidMount() {
@@ -36,14 +39,7 @@ class HomeContainer extends Component {
   }
 
   render() {
-    const {
-      nowPlaying,
-      popular,
-      topRated,
-      upcoming,
-      isLoading,
-      error
-    } = this.state;
+    const { nowPlaying, popular, topRated, upcoming, isLoading } = this.state;
     return (
       <HomePresenter
         nowPlaying={nowPlaying}
@@ -51,7 +47,6 @@ class HomeContainer extends Component {
         topRated={topRated}
         upcoming={upcoming}
         isLoading={isLoading}
-        error={error}
       />
     );
   }

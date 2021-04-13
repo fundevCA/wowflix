@@ -1,4 +1,4 @@
 import React from "react";
-import SearchPresenter from "./SearchPresenter";
+import SearchPresenter from "Routes/Search/SearchPresenter";
 
-export default SearchPresenter;
+export default <SearchPresenter />;
