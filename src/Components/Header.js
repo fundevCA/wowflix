@@ -32,9 +32,6 @@ const Header = ({ location: { pathname } }) => (
       <Link to="/search">
         <List current={pathname === "/search"}>Search</List>
       </Link>
-      <Link to="/detail">
-        <List current={pathname === "/detail"}>Detail</List>
-      </Link>
     </Ul>
   </>
 );

@@ -13,9 +13,10 @@ const Router = () => {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/detail" component={Detail} />
           <Route path="/search" component={Search} />
           <Route path="/tv" component={TV} />
+          <Route path="/movie/:id" component={Detail} />
+          <Route path="/tv/:id" component={Detail} />
         </Switch>
       </>
     </BrowserRouter>
