@@ -27,4 +27,17 @@ const movieAPI = {
     })
 };
 
-export default { movieAPI };
+const tvAPI = {
+  airingToday: () => base.get("tv/airing_today"),
+  popular: () => base.get("tv/popular"),
+  topRated: () => base.get("tv/top_rated"),
+  detail: id => base.get(`tv/${id}`),
+  search: () =>
+    base.get("search/tv", {
+      params: {
+        query: keyword => encodeURIComponent(keyword)
+      }
+    })
+};
+
+export default { movieAPI, tvAPI };
