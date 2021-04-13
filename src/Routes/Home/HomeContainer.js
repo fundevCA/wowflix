@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import HomePresenter from "./HomePresenter";
 import { movieAPI } from "../../Components/API";
-=======
-import HomePresenter from "components/HomePresenter";
->>>>>>> parent of 438f4bf... Setting Container and Presenter for TV
 
 class HomeContainer extends Component {
   state = {
