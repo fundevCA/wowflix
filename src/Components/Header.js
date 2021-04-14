@@ -27,7 +27,7 @@ const Header = ({ location: { pathname } }) => (
         <List current={pathname === "/"}>Home</List>
       </Link>
       <Link to="/tv">
-        <List current={pathname === "/tv"}>tv</List>
+        <List current={pathname === "/tv"}>TV</List>
       </Link>
       <Link to="/search">
         <List current={pathname === "/search"}>Search</List>

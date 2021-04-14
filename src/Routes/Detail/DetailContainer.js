@@ -1,17 +1,54 @@
 import React, { Component } from "react";
 import DetailPresenter from "./DetailPresenter";
+import { movieAPI, tvAPI } from "../../Components/API";
 
 class DetailContainer extends Component {
-  state = {
-    detail: null,
-    isLoading: true,
-    error: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      detail: null,
+      isLoading: true,
+      error: false,
+      isMovie: props.match.path.includes("/movie/")
+    };
+  }
+
+  async componentDidMount() {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    if (isNaN(parseInt(id))) {
+      this.props.history.push("/");
+    } else {
+      const { isMovie } = this.state;
+      let detail = null;
+      try {
+        if (isMovie) {
+          ({ data: detail } = await movieAPI.detail(id));
+        } else {
+          ({ data: detail } = await tvAPI.detail(id));
+        }
+        this.setState({ detail });
+      } catch {
+        this.setState({ error: "Could not find the Detail" });
+      } finally {
+        this.setState({ isLoading: false });
+        console.log(this.state.detail);
+      }
+    }
+  }
 
   render() {
-    const { detail, isLoading, error } = this.state;
+    const { detail, isLoading, error, isMovie } = this.state;
     return (
-      <DetailPresenter detail={detail} isLoading={isLoading} error={error} />
+      <DetailPresenter
+        detail={detail}
+        isLoading={isLoading}
+        error={error}
+        isMovie={isMovie}
+      />
     );
   }
 }
