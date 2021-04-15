@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const HomePresenter = () => {
+const SearchPresenter = () => {
   return null;
 };
 
-HomePresenter.propTypes = {
+SearchPresenter.propTypes = {
   searchMovie: PropTypes.array,
   searchTV: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
@@ -14,4 +14,4 @@ HomePresenter.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-export default HomePresenter;
+export default SearchPresenter;
