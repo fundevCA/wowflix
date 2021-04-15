@@ -8,7 +8,8 @@ class HomeContainer extends Component {
     popular: null,
     topRated: null,
     upcoming: null,
-    isLoading: true
+    isLoading: true,
+    error: ""
   };
 
   async componentDidMount() {
@@ -35,7 +36,14 @@ class HomeContainer extends Component {
   }
 
   render() {
-    const { nowPlaying, popular, topRated, upcoming, isLoading } = this.state;
+    const {
+      nowPlaying,
+      popular,
+      topRated,
+      upcoming,
+      isLoading,
+      error
+    } = this.state;
     return (
       <HomePresenter
         nowPlaying={nowPlaying}
@@ -43,6 +51,7 @@ class HomeContainer extends Component {
         topRated={topRated}
         upcoming={upcoming}
         isLoading={isLoading}
+        error={error}
       />
     );
   }
