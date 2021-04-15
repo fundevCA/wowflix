@@ -8,7 +8,7 @@ class TVContainer extends Component {
     popular: null,
     topRated: null,
     isLoading: true,
-    error: false
+    error: ""
   };
 
   async componentDidMount() {
