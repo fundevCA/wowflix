@@ -37,6 +37,7 @@ class DetailContainer extends Component {
         this.setState({ error: "Could not find the Detail" });
       } finally {
         this.setState({ isLoading: false });
+        console.log(detail);
       }
     }
   }

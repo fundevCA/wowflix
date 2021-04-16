@@ -13,7 +13,11 @@ const Title = styled.div`
   font-weight: 500;
   margin-bottom: 1.4rem;
 `;
-const Grid = styled.div``;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 10rem);
+`;
+const Item = styled.div``;
 
 const Section = ({ title, children }) => {
   return (

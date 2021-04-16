@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "../../Components/Section";
+import Loader from "../../Components/Loader";
 
 const Container = styled.div``;
+const Title = styled.span``;
 
 const HomePresenter = ({
   nowPlaying,
@@ -12,33 +14,45 @@ const HomePresenter = ({
   upcoming,
   isLoading,
   error
-}) => {
-  return (
+}) =>
+  isLoading ? (
+    <Loader />
+  ) : (
     <Container>
       {nowPlaying && nowPlaying.length > 0 && (
         <Section
           title="Now Playing"
-          children={nowPlaying.map(movie => movie.title)}
+          children={nowPlaying.map(movie => (
+            <Title key={movie.id}>{movie.title}</Title>
+          ))}
         />
       )}
       {popular && popular.length > 0 && (
-        <Section title="Popular" children={popular.map(movie => movie.title)} />
+        <Section
+          title="Popular"
+          children={popular.map(movie => (
+            <Title key={movie.id}>{movie.title}</Title>
+          ))}
+        />
       )}
       {topRated && topRated.length > 0 && (
         <Section
           title="Top Rated"
-          children={topRated.map(movie => movie.title)}
+          children={topRated.map(movie => (
+            <Title key={movie.id}>{movie.title}</Title>
+          ))}
         />
       )}
       {upcoming && upcoming.length > 0 && (
         <Section
           title="Upcoming"
-          children={upcoming.map(movie => movie.title)}
+          children={upcoming.map(movie => (
+            <Title key={movie.id}>{movie.title}</Title>
+          ))}
         />
       )}
     </Container>
   );
-};
 
 HomePresenter.propTypes = {
   nowPlaying: PropTypes.array,

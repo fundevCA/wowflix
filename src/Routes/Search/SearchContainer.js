@@ -10,13 +10,22 @@ class SearchContainer extends Component {
     isLoading: false,
     error: ""
   };
-  handleSubmit = keyword => {
-    const { term } = this.state;
-    this.setState({ term: keyword });
+
+  handleChange = e => {
+    const {
+      target: { value: term }
+    } = e;
+    this.setState({ term });
     if (term !== "") {
       this.setState({ isLoading: true });
       this.searchByTerm(term);
     }
+    if (term === "") {
+      this.setState({ isLoading: false, searchMovie: null, searchTV: null });
+    }
+  };
+  handleSubmit = e => {
+    e.preventDefault();
   };
   searchByTerm = async word => {
     try {
@@ -44,6 +53,7 @@ class SearchContainer extends Component {
         isLoading={isLoading}
         error={error}
         handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
       />
     );
   }
