@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
+import Message from "../../Components/Message";
 
 const Container = styled.div``;
 const Title = styled.span``;
@@ -51,6 +52,7 @@ const HomePresenter = ({
           ))}
         />
       )}
+      {error && error.length > 0 && <Message text={error} color="#bbbbbb" />}
     </Container>
   );
 

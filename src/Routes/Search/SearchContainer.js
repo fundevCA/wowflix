@@ -45,11 +45,12 @@ class SearchContainer extends Component {
   };
 
   render() {
-    const { searchMovie, searchTV, isLoading, error } = this.state;
+    const { searchMovie, searchTV, term, isLoading, error } = this.state;
     return (
       <SearchPresenter
         searchMovie={searchMovie}
         searchTV={searchTV}
+        term={term}
         isLoading={isLoading}
         error={error}
         handleSubmit={this.handleSubmit}

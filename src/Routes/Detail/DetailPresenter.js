@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
+import Message from "../../Components/Message";
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +19,13 @@ const Title = styled.div`
 const Genre = styled.div``;
 
 const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
-  isLoading ? <Loader /> : <Container></Container>;
+  isLoading ? (
+    <Loader />
+  ) : (
+    <Container>
+      {error && error.length > 0 && <Message text={error} color="#bbbbbb" />}
+    </Container>
+  );
 
 DetailPresenter.propTypes = {
   detail: PropTypes.object,
