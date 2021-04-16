@@ -8,20 +8,24 @@ class SearchContainer extends Component {
     searchTV: null,
     term: "",
     isLoading: false,
-    error: false
+    error: ""
   };
-  handleSubmit = () => {
-    const term = this.state;
+  handleSubmit = keyword => {
+    const { term } = this.state;
+    this.setState({ term: keyword });
     if (term !== "") {
       this.setState({ isLoading: true });
-      this.searchByTerm();
+      this.searchByTerm(term);
     }
   };
-  searchByTerm = async () => {
+  searchByTerm = async word => {
     try {
-      const term = this.state;
-      const searchMovie = await movieAPI.search(term);
-      const searchTV = await tvAPI.search(term);
+      const {
+        data: { results: searchMovie }
+      } = await movieAPI.search(word);
+      const {
+        data: { results: searchTV }
+      } = await tvAPI.search(word);
 
       this.setState({ searchMovie, searchTV });
     } catch {

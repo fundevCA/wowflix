@@ -32,10 +32,10 @@ export const tvAPI = {
   popular: () => base.get("tv/popular"),
   topRated: () => base.get("tv/top_rated"),
   detail: id => base.get(`tv/${id}`),
-  search: () =>
+  search: keyword =>
     base.get("search/tv", {
       params: {
-        query: keyword => encodeURIComponent(keyword)
+        query: encodeURIComponent(keyword)
       }
     })
 };

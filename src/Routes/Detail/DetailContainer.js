@@ -8,21 +8,23 @@ class DetailContainer extends Component {
     this.state = {
       detail: null,
       isLoading: true,
-      error: false,
+      error: "",
       isMovie: props.match.path.includes("/movie/")
     };
   }
 
   async componentDidMount() {
-    const {
+    let {
       match: {
         params: { id }
       }
     } = this.props;
+
     if (isNaN(parseInt(id))) {
       this.props.history.push("/");
     } else {
       const { isMovie } = this.state;
+      id = parseInt(id);
       let detail = null;
       try {
         if (isMovie) {
@@ -35,7 +37,6 @@ class DetailContainer extends Component {
         this.setState({ error: "Could not find the Detail" });
       } finally {
         this.setState({ isLoading: false });
-        console.log(this.state.detail);
       }
     }
   }
