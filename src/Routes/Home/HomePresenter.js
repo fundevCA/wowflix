@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
+import Poster from "../../Components/Poster";
 
 const Container = styled.div``;
 const Title = styled.span``;
@@ -24,7 +25,13 @@ const HomePresenter = ({
         <Section
           title="Now Playing"
           children={nowPlaying.map(movie => (
-            <Title key={movie.id}>{movie.title}</Title>
+            <Poster
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster={movie.poster_path}
+              date={movie.release_date}
+            ></Poster>
           ))}
         />
       )}
