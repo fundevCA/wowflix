@@ -31,6 +31,7 @@ const HomePresenter = ({
               title={movie.title}
               poster={movie.poster_path}
               date={movie.release_date}
+              isMovie={true}
             ></Poster>
           ))}
         />
@@ -39,7 +40,14 @@ const HomePresenter = ({
         <Section
           title="Popular"
           children={popular.map(movie => (
-            <Title key={movie.id}>{movie.title}</Title>
+            <Poster
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster={movie.poster_path}
+              date={movie.release_date}
+              isMovie={true}
+            ></Poster>
           ))}
         />
       )}
@@ -47,7 +55,14 @@ const HomePresenter = ({
         <Section
           title="Top Rated"
           children={topRated.map(movie => (
-            <Title key={movie.id}>{movie.title}</Title>
+            <Poster
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster={movie.poster_path}
+              date={movie.release_date}
+              isMovie={true}
+            ></Poster>
           ))}
         />
       )}
@@ -55,7 +70,14 @@ const HomePresenter = ({
         <Section
           title="Upcoming"
           children={upcoming.map(movie => (
-            <Title key={movie.id}>{movie.title}</Title>
+            <Poster
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster={movie.poster_path}
+              date={movie.release_date}
+              isMovie={true}
+            ></Poster>
           ))}
         />
       )}

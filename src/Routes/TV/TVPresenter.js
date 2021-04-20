@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
+import Poster from "../../Components/Poster";
 
 const Container = styled.div``;
 const Title = styled.span``;
@@ -16,21 +17,39 @@ const TVPresenter = ({ airingToday, popular, topRated, isLoading, error }) =>
       {airingToday && airingToday.length && (
         <Section title="Airing Today">
           {airingToday.map(tv => (
-            <Title key={tv.id}>{tv.name}</Title>
+            <Poster
+              key={tv.id}
+              id={tv.id}
+              title={tv.original_name}
+              poster={tv.poster_path}
+              date={tv.first_air_date}
+            ></Poster>
           ))}
         </Section>
       )}
       {popular && popular.length && (
         <Section title="Popular">
           {popular.map(tv => (
-            <Title key={tv.id}>{tv.name}</Title>
+            <Poster
+              key={tv.id}
+              id={tv.id}
+              title={tv.original_name}
+              poster={tv.poster_path}
+              date={tv.first_air_date}
+            ></Poster>
           ))}
         </Section>
       )}
       {topRated && topRated.length && (
         <Section title="Top Rated">
           {topRated.map(tv => (
-            <Title key={tv.id}>{tv.name}</Title>
+            <Poster
+              key={tv.id}
+              id={tv.id}
+              title={tv.original_name}
+              poster={tv.poster_path}
+              date={tv.first_air_date}
+            ></Poster>
           ))}
         </Section>
       )}

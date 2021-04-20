@@ -6,33 +6,40 @@ import styled from "styled-components";
 const Container = styled.div`
   justify-items: end;
   width: 10rem;
-  height: 18rem;
-`;
-const Title = styled.span`
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
 `;
 const Image = styled.img`
   width: inherit;
   height: 16rem;
   object-fit: contain;
+  border-radius: 0.3rem;
+  :hover {
+    opacity: 0.3;
+  }
+`;
+const Title = styled.span`
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
 `;
 const Date = styled.div`
   color: grey;
+  font-size: 0.8rem;
 `;
-const BASE_URL = "https://image.tmdb.org/t/p/original/";
+const BASE_URL = "https://image.tmdb.org/t/p/w300/";
 
-const Poster = ({ id, title, poster, date }) => (
-  <Container>
-    <Image src={BASE_URL + poster}></Image>
-    <Title>{title.length < 20 ? title : title.substring(0, 20)}</Title>
-    <Date> ({date.substring(0, 4)})</Date>
-  </Container>
+const Poster = ({ id, title, poster, date, isMovie = false }) => (
+  <Link to={isMovie ? `/movie/${id}` : `tv/${id}`}>
+    <Container>
+      <Image src={BASE_URL + poster}></Image>
+      <Title>{title}</Title>
+      <Date> ({date.substring(0, 4)})</Date>
+    </Container>
+  </Link>
 );
 
 Poster.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   date: PropTypes.string,

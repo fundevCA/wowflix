@@ -37,13 +37,13 @@ class DetailContainer extends Component {
         this.setState({ error: "Could not find the Detail" });
       } finally {
         this.setState({ isLoading: false });
-        console.log(detail);
       }
     }
   }
 
   render() {
     const { detail, isLoading, error, isMovie } = this.state;
+    console.log(detail);
     return (
       <DetailPresenter
         detail={detail}
