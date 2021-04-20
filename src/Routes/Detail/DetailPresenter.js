@@ -6,18 +6,21 @@ import Message from "../../Components/Message";
 
 const BASE_URL = "https://image.tmdb.org/t/p/original/";
 const Container = styled.div`
+  position: absolute;
   width: 100vw;
   height: 90vh;
+  background-color: grey;
 `;
 const BackPoster = styled.div`
-  position: absolute;
-  display: block;
-  width: 90vw;
-  height: 90vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url(${props => props.back});
+  background-position: center center;
+
+  background-size: cover;
   opacity: 0.4;
 `;
 const Grid = styled.div``;
@@ -39,8 +42,8 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
     <Loader />
   ) : (
     <>
-      <BackPoster back={BASE_URL + detail.backdrop_path} />
       <Container>
+        <BackPoster back={BASE_URL + detail.backdrop_path} />
         <Grid>
           <Poster poster={BASE_URL + detail.poster_path}></Poster>
           <Description>Hi</Description>

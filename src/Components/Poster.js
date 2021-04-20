@@ -33,8 +33,10 @@ const Poster = ({ id, title, poster, date, isMovie = false }) => (
   <Link to={isMovie ? `/movie/${id}` : `tv/${id}`}>
     <Container>
       <Image src={poster ? BASE_URL + poster : noPoster}></Image>
-      <Title>{title}</Title>
-      <Date> ({date.substring(0, 4)})</Date>
+      <Title>
+        {title.length > 18 ? `${title.substring(0, 18)}...` : title}
+      </Title>
+      <Date> {date ? date.substring(0, 4) : null}</Date>
     </Container>
   </Link>
 );

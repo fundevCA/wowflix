@@ -34,42 +34,52 @@ const SearchPresenter = ({
 }) => (
   <Container>
     <Form onSubmit={handleSubmit}>
-      <Input placeholder="Search Movie / TV Show" onChange={handleChange} />
+      <Input
+        placeholder="Search Movie / TV Show"
+        onChange={handleChange}
+        value={term}
+      />
     </Form>
-    {searchMovie && searchMovie.length > 0 && (
-      <Section title={`MOVIES`}>
-        {searchMovie.map(movie => (
-          <Poster
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            poster={movie.poster_path}
-            date={movie.release_date}
-            isMovie={true}
-          ></Poster>
-        ))}
-      </Section>
+    {isLoading ? (
+      <Loader />
+    ) : (
+      <>
+        {searchMovie && searchMovie.length > 0 && (
+          <Section title={`MOVIES`}>
+            {searchMovie.map(movie => (
+              <Poster
+                key={movie.id}
+                id={movie.id}
+                title={movie.original_title}
+                poster={movie.poster_path}
+                date={movie.release_date}
+                isMovie={true}
+              />
+            ))}
+          </Section>
+        )}
+        {searchTV && searchTV.length > 0 && (
+          <Section title={`TV`}>
+            {searchTV.map(tv => (
+              <Poster
+                key={tv.id}
+                id={tv.id}
+                title={tv.original_name}
+                poster={tv.poster_path}
+                date={tv.first_air_date}
+              ></Poster>
+            ))}
+          </Section>
+        )}
+        {error && error.length > 0 && <Message text={error} color="#bbbbbb" />}
+        {searchMovie &&
+          searchTV &&
+          searchMovie.length === 0 &&
+          searchTV.length === 0 && (
+            <Message text={`Nothing found for ${term}`} color="#bbbbbb" />
+          )}
+      </>
     )}
-    {searchTV && searchTV.length > 0 && (
-      <Section title={`TV`}>
-        {searchTV.map(tv => (
-          <Poster
-            key={tv.id}
-            id={tv.id}
-            title={tv.original_name}
-            poster={tv.poster_path}
-            date={tv.first_air_date}
-          ></Poster>
-        ))}
-      </Section>
-    )}
-    {searchMovie &&
-      searchTV &&
-      searchMovie.length === 0 &&
-      searchTV.length === 0 && (
-        <Message text={`Nothing found for ${term}`} color="#bbbbbb" />
-      )}
-    {error && error.length > 0 && <Message text={error} color="#bbbbbb" />}
   </Container>
 );
 
