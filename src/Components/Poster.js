@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import noPoster from "../Assets/no_poster.png";
 
 const Container = styled.div`
   justify-items: end;
@@ -31,7 +32,7 @@ const BASE_URL = "https://image.tmdb.org/t/p/w300/";
 const Poster = ({ id, title, poster, date, isMovie = false }) => (
   <Link to={isMovie ? `/movie/${id}` : `tv/${id}`}>
     <Container>
-      <Image src={BASE_URL + poster}></Image>
+      <Image src={poster ? BASE_URL + poster : noPoster}></Image>
       <Title>{title}</Title>
       <Date> ({date.substring(0, 4)})</Date>
     </Container>
@@ -41,7 +42,7 @@ const Poster = ({ id, title, poster, date, isMovie = false }) => (
 Poster.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   date: PropTypes.string,
   isMovie: PropTypes.bool
 };
