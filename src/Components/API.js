@@ -31,7 +31,12 @@ export const tvAPI = {
   airingToday: () => base.get("tv/airing_today"),
   popular: () => base.get("tv/popular"),
   topRated: () => base.get("tv/top_rated"),
-  detail: id => base.get(`tv/${id}`),
+  detail: id =>
+    base.get(`tv/${id}`, {
+      params: {
+        append_to_response: "videos"
+      }
+    }),
   search: keyword =>
     base.get("search/tv", {
       params: {

@@ -14,9 +14,9 @@ const TVPresenter = ({ airingToday, popular, topRated, isLoading, error }) =>
     <Loader />
   ) : (
     <Container>
-      {airingToday && airingToday.length && (
-        <Section title="Airing Today">
-          {airingToday.map(tv => (
+      {popular && popular.length && (
+        <Section title="Popular">
+          {popular.map(tv => (
             <Poster
               key={tv.id}
               id={tv.id}
@@ -27,9 +27,9 @@ const TVPresenter = ({ airingToday, popular, topRated, isLoading, error }) =>
           ))}
         </Section>
       )}
-      {popular && popular.length && (
-        <Section title="Popular">
-          {popular.map(tv => (
+      {airingToday && airingToday.length && (
+        <Section title="Airing Today">
+          {airingToday.map(tv => (
             <Poster
               key={tv.id}
               id={tv.id}
