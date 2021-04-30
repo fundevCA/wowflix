@@ -32,3 +32,10 @@ Presenter will show the data ( Just a functional component )
 - [x] Top Rated
 - [x] TV Detail
 - [x] Search TV
+
+### Detail
+
+- [] IMDB Link
+- [] Youtube Video
+- [] Collections Link
+- [] Show seasons for TV

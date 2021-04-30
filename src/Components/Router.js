@@ -5,6 +5,7 @@ import Detail from "../Routes/Detail";
 import Search from "../Routes/Search";
 import TV from "../Routes/TV";
 import Header from "./Header";
+import Collection from "../Routes/Collection";
 
 const Router = () => {
   return (
@@ -15,8 +16,9 @@ const Router = () => {
           <Route path="/" exact component={Home} />
           <Route path="/search" component={Search} />
           <Route path="/tv" exact component={TV} />
-          <Route path="/movie/:id" component={Detail} />
           <Route path="/tv/:id" component={Detail} />
+          <Route path="/movie/:id" component={Detail} />
+          <Route path="/collection/:id" component={Collection} />
         </Switch>
       </>
     </BrowserRouter>

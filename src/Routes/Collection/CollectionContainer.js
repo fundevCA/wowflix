@@ -1,58 +1,52 @@
-// import React, { Component } from "react";
-// import CollectionPresenter from "./CollectionPresenter";
-// import { movieAPI, tvAPI } from "../../Components/API";
+import React, { Component } from "react";
+import CollectionPresenter from "./CollectionPresenter";
+import { collectionAPI } from "../../Components/API";
 
-// class DetailContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       detail: null,
-//       isLoading: true,
-//       error: "",
-//       isMovie: props.match.path.includes("/movie/")
-//     };
-//   }
+class CollectionContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      detail: null,
+      isLoading: true,
+      error: ""
+    };
+  }
 
-//   async componentDidMount() {
-//     let {
-//       match: {
-//         params: { id }
-//       }
-//     } = this.props;
+  async componentDidMount() {
+    let {
+      match: {
+        params: { id }
+      }
+    } = this.props;
 
-//     if (isNaN(parseInt(id))) {
-//       this.props.history.push("/");
-//     } else {
-//       const { isMovie } = this.state;
-//       id = parseInt(id);
-//       let detail = null;
-//       try {
-//         if (isMovie) {
-//           ({ data: detail } = await movieAPI.detail(id));
-//         } else {
-//           ({ data: detail } = await tvAPI.detail(id));
-//         }
-//         this.setState({ detail });
-//       } catch {
-//         this.setState({ error: "Could not find the Detail" });
-//       } finally {
-//         this.setState({ isLoading: false });
-//       }
-//     }
-//   }
+    if (isNaN(parseInt(id))) {
+      this.props.history.push("/");
+    } else {
+      id = parseInt(id);
+      let detail = null;
+      try {
+        ({ data: detail } = await collectionAPI.detail(id));
+        this.setState({ detail });
+        console.log(detail);
+      } catch {
+        this.setState({ error: "Could not find the Collection" });
+      } finally {
+        this.setState({ isLoading: false });
+      }
+    }
+  }
 
-//   render() {
-//     const { detail, isLoading, error, isMovie } = this.state;
-//     console.log(detail);
-//     return (
-//       <DetailPresenter
-//         detail={detail}
-//         isLoading={isLoading}
-//         error={error}
-//         isMovie={isMovie}
-//       />
-//     );
-//   }
-// }
+  render() {
+    const { detail, isLoading, error } = this.state;
+    console.log(detail);
+    return (
+      <CollectionPresenter
+        detail={detail}
+        isLoading={isLoading}
+        error={error}
+      />
+    );
+  }
+}
 
-// export default DetailContainer;
+export default CollectionContainer;
