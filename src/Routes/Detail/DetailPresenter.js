@@ -8,6 +8,8 @@ import noBack from "../../Assets/no_background.jpeg";
 import Helmet from "react-helmet";
 import IMDBIMG from "../../Assets/IMDB.png";
 import { Link } from "react-router-dom";
+import CollectionCard from "../../Components/CollectionCard";
+import BackPoster from "../../Components/BackPoster";
 
 const BASE_URL = "https://image.tmdb.org/t/p/original/";
 const Container = styled.div`
@@ -17,19 +19,20 @@ const Container = styled.div`
   background-color: grey;
   padding: 3rem;
 `;
-const BackPoster = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(${props => props.back});
-  background-position: center center;
-  background-size: cover;
-  filter: blur(3px);
-  opacity: 0.4;
-  z-index: 0;
-`;
+const Background = styled(BackPoster)``;
+// const BackPoster = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-image: url(${props => props.back});
+//   background-position: center center;
+//   background-size: cover;
+//   filter: blur(3px);
+//   opacity: 0.4;
+//   z-index: 0;
+// `;
 const Content = styled.div`
   height: 100%;
   width: 100%;
@@ -54,7 +57,7 @@ const Description = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-
+  overflow: scroll;
   padding-left: 4rem;
   font-size: 1.5rem;
   z-index: 1;
@@ -77,6 +80,7 @@ const ItemContainer = styled.div`
   align-items: center;
   font-size: 1rem;
   margin: 1rem 0;
+  flex-wrap: wrap;
 `;
 const Item = styled.span``;
 const Divider = styled.span``;
@@ -122,6 +126,10 @@ const Video = styled.iframe`
   height: 100%;
   width: 100%;
 `;
+const Card = styled(CollectionCard)`
+  height: 100rem;
+  width: 30rem;
+`;
 
 const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
   isLoading ? (
@@ -135,7 +143,7 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
         </title>
       </Helmet>
       <Container>
-        <BackPoster
+        <Background
           back={
             detail.backdrop_path
               ? `https://image.tmdb.org/t/p/original/${detail.backdrop_path}`
@@ -189,8 +197,17 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
                   ""
                 )}
               </ItemContainer>
-
-              <Tagline>{detail.tagline}</Tagline>
+              <ItemContainer>
+                <Tagline>{detail.tagline} </Tagline>{" "}
+                {detail.belongs_to_collection ? (
+                  <Card
+                    id={detail.belongs_to_collection.id}
+                    poster={`https://image.tmdb.org/t/p/original/${detail.belongs_to_collection.poster_path}`}
+                  />
+                ) : (
+                  ""
+                )}
+              </ItemContainer>
               <Overview>{detail.overview}</Overview>
             </TextContainer>
 
@@ -200,6 +217,7 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
                   <Video
                     id={video.id}
                     src={`https://www.youtube.com/embed/${video.key}`}
+                    allow={"fullscreen"}
                   />
                 ))}
               </VideoContainer>
