@@ -22,6 +22,7 @@ class SearchContainer extends Component {
     const {
       target: { value: term }
     } = e;
+
     this.setState({ term });
   };
   searchByTerm = async () => {

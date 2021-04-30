@@ -5,6 +5,9 @@ import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
 import noPoster from "../../Assets/no_poster.png";
 import noBack from "../../Assets/no_background.jpeg";
+import Helmet from "react-helmet";
+import IMDBIMG from "../../Assets/IMDB.png";
+import { Link } from "react-router-dom";
 
 const BASE_URL = "https://image.tmdb.org/t/p/original/";
 const Container = styled.div`
@@ -70,6 +73,8 @@ const Title = styled.h3`
   font-size: 3rem;
 `;
 const ItemContainer = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   margin: 1rem 0;
 `;
@@ -81,6 +86,20 @@ const Genre = styled.span`
 `;
 const Runtime = styled.span``;
 const Vote = styled.span``;
+const IMDB = styled.div`
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 2rem;
+  height: 1rem;
+  background-image: url(${IMDBIMG});
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  &:hover {
+    cursor: pointer;
+  }
+`;
 const Tagline = styled.span`
   font-style: italic;
   font-size: 1.2rem;
@@ -109,6 +128,12 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
     <Loader />
   ) : (
     <>
+      <Helmet>
+        <title>
+          {detail.original_title ? detail.original_title : detail.name} |
+          WOWFLIX
+        </title>
+      </Helmet>
       <Container>
         <BackPoster
           back={
@@ -135,22 +160,34 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
                     ? detail.release_date.substring(0, 4)
                     : detail.first_air_date.substring(0, 4)}
                 </Item>
-                <Divider> ∙ </Divider>
+                <Divider>&nbsp;∙&nbsp;</Divider>
                 <Item>
                   {detail.genres.map((genre, index) =>
                     index > 0 ? ` ∙ ` + genre.name : genre.name
                   )}
-                  &nbsp;&nbsp;&nbsp;
+                  &nbsp;
                 </Item>
-                <Divider> ∙ </Divider>
+                <Divider>&nbsp;∙&nbsp;</Divider>
                 <Item>
-                  {detail.runtime ? detail.runtime : detail.episode_run_time[0]}
-                  m
+                  {detail.runtime
+                    ? detail.runtime + "m"
+                    : detail.episode_run_time[0] + "m"}
                 </Item>
-                <Divider> ∙ </Divider>
+                <Divider>&nbsp;∙&nbsp;</Divider>
                 <Item>
                   <span aria-label="star">⭐️</span> {detail.vote_average} / 10
                 </Item>
+                <Divider>&nbsp;∙&nbsp;</Divider>
+                {detail.imdb_id ? (
+                  <a
+                    href={`https://www.imdb.com/title/${detail.imdb_id}`}
+                    target="_blank"
+                  >
+                    <IMDB />
+                  </a>
+                ) : (
+                  ""
+                )}
               </ItemContainer>
 
               <Tagline>{detail.tagline}</Tagline>
@@ -159,7 +196,7 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
 
             {detail.videos ? (
               <VideoContainer>
-                {detail.videos.results.map(video => (
+                {detail.videos.results.slice(0, 1).map(video => (
                   <Video
                     id={video.id}
                     src={`https://www.youtube.com/embed/${video.key}`}
