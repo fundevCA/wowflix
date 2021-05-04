@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Home from "../Routes/Home";
 import Detail from "../Routes/Detail";
 import Search from "../Routes/Search";
@@ -9,7 +9,7 @@ import Collection from "../Routes/Collection";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <>
         <Header />
         <Switch>
@@ -21,7 +21,7 @@ const Router = () => {
           <Route path="/collection/:id" component={Collection} />
         </Switch>
       </>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
