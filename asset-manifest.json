@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/wowflix/static/js/main.7e06f4ce.chunk.js",
-    "main.js.map": "/wowflix/static/js/main.7e06f4ce.chunk.js.map",
+    "main.js": "/wowflix/static/js/main.b1a6fe49.chunk.js",
+    "main.js.map": "/wowflix/static/js/main.b1a6fe49.chunk.js.map",
     "runtime-main.js": "/wowflix/static/js/runtime-main.11aee0de.js",
     "runtime-main.js.map": "/wowflix/static/js/runtime-main.11aee0de.js.map",
-    "static/js/2.3582f3ea.chunk.js": "/wowflix/static/js/2.3582f3ea.chunk.js",
-    "static/js/2.3582f3ea.chunk.js.map": "/wowflix/static/js/2.3582f3ea.chunk.js.map",
+    "static/js/2.214883da.chunk.js": "/wowflix/static/js/2.214883da.chunk.js",
+    "static/js/2.214883da.chunk.js.map": "/wowflix/static/js/2.214883da.chunk.js.map",
     "index.html": "/wowflix/index.html",
-    "static/js/2.3582f3ea.chunk.js.LICENSE.txt": "/wowflix/static/js/2.3582f3ea.chunk.js.LICENSE.txt",
+    "static/js/2.214883da.chunk.js.LICENSE.txt": "/wowflix/static/js/2.214883da.chunk.js.LICENSE.txt",
     "static/media/IMDB.1fd6c3b4.png": "/wowflix/static/media/IMDB.1fd6c3b4.png",
     "static/media/no_background.2e124746.jpeg": "/wowflix/static/media/no_background.2e124746.jpeg",
     "static/media/no_poster.56e1ce3e.png": "/wowflix/static/media/no_poster.56e1ce3e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.11aee0de.js",
-    "static/js/2.3582f3ea.chunk.js",
-    "static/js/main.7e06f4ce.chunk.js"
+    "static/js/2.214883da.chunk.js",
+    "static/js/main.b1a6fe49.chunk.js"
   ]
 }
