@@ -13,7 +13,7 @@ const Back = styled.div`
   background-size: cover;
   filter: blur(3px);
   opacity: 0.4;
-  z-index: 0;
+  z-index: -1;
 `;
 
 const BackPoster = ({ back }) => <Back back={back} />;

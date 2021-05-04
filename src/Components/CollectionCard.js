@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Card = styled.div`
   height: 5rem;
@@ -12,7 +13,11 @@ const Card = styled.div`
   border-radius: 2rem;
 `;
 
-const Collection = ({ id, poster }) => <Card poster={poster} />;
+const Collection = ({ id, poster }) => (
+  <Link to={`/collection/${id}`}>
+    <Card poster={poster} />
+  </Link>
+);
 
 Collection.propTypes = {
   id: PropTypes.number.isRequired,

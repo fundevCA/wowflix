@@ -3,18 +3,49 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import BackPoster from "../../Components/BackPoster";
 import Loader from "../../Components/Loader";
+import CollectionCard from "../../Components/CollectionCard";
+import Collection from "../../Components/Collection";
+import noPoster from "../../Assets/no_poster.png";
+import noBack from "../../Assets/no_background.jpeg";
 
 const Container = styled.div`
   position: relative;
   width: 100vw;
   height: calc(100vh - 4.5rem);
-  background-color: grey;
+
   padding: 3rem;
 `;
-const Back = styled(BackPoster)`
-  height: 50%;
+const Back = styled(BackPoster)``;
+const Content = styled.div`
+  height: 100%;
   width: 100%;
+  /* display: flex; */
+  box-sizing: border-box;
 `;
+const Title = styled.h3`
+  font-size: 3.5em;
+
+  color: #f9f6f7;
+  letter-spacing: 5px;
+  top: 50%;
+  text-shadow: -1px -1px 0px #151515, 3px 3px 0px #151515, 6px 6px 0px #151515;
+`;
+const Card = styled(CollectionCard)``;
+const Item = styled.div`
+  display: flex;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+`;
+const CollectionPoster = styled(Collection)``;
+const Collections = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 21rem);
+  grid-gap: 3rem;
+  padding-left: 1.5rem;
+`;
+const BASE_URL = `https://image.tmdb.org/t/p/original/`;
 
 const CollectionPresenter = ({ detail, isLoading, error }) =>
   isLoading ? (
@@ -22,8 +53,29 @@ const CollectionPresenter = ({ detail, isLoading, error }) =>
   ) : (
     <Container>
       <BackPoster
-        back={`https://image.tmdb.org/t/p/original/${detail.backdrop_path}`}
+        back={
+          detail.backdrop_path ? `${BASE_URL}${detail.backdrop_path}` : noBack
+        }
       />
+      <Content>
+        <Item>
+          <Title>{detail.name}</Title>
+          <Card id={detail.id} poster={BASE_URL + detail.poster_path} />
+        </Item>
+        <Collections>
+          {detail.parts
+            ? detail.parts.map(collection => (
+                <CollectionPoster
+                  key={collection.id}
+                  id={collection.id}
+                  title={collection.title}
+                  poster={collection.poster_path}
+                  date={collection.release_date}
+                />
+              ))
+            : ""}
+        </Collections>
+      </Content>
     </Container>
   );
 

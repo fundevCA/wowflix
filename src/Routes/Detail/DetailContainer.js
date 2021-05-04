@@ -43,7 +43,6 @@ class DetailContainer extends Component {
 
   render() {
     const { detail, isLoading, error, isMovie } = this.state;
-    console.log(detail);
     return (
       <DetailPresenter
         detail={detail}

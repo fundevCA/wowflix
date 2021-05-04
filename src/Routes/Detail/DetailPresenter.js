@@ -7,7 +7,6 @@ import noPoster from "../../Assets/no_poster.png";
 import noBack from "../../Assets/no_background.jpeg";
 import Helmet from "react-helmet";
 import IMDBIMG from "../../Assets/IMDB.png";
-import { Link } from "react-router-dom";
 import CollectionCard from "../../Components/CollectionCard";
 import BackPoster from "../../Components/BackPoster";
 
@@ -16,28 +15,14 @@ const Container = styled.div`
   position: relative;
   width: 100vw;
   height: calc(100vh - 4.5rem);
-  background-color: grey;
   padding: 3rem;
 `;
 const Background = styled(BackPoster)``;
-// const BackPoster = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-image: url(${props => props.back});
-//   background-position: center center;
-//   background-size: cover;
-//   filter: blur(3px);
-//   opacity: 0.4;
-//   z-index: 0;
-// `;
+
 const Content = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  /* justify-content: center; */
   box-sizing: border-box;
 `;
 const Poster = styled.div`
@@ -83,7 +68,12 @@ const ItemContainer = styled.div`
   flex-wrap: wrap;
 `;
 const Item = styled.span``;
-const Divider = styled.span``;
+const Divider = styled.span`
+  margin: 0 0.4rem;
+  &:before {
+    content: "∙";
+  }
+`;
 
 const Genre = styled.span`
   font-size: 1rem;
@@ -145,17 +135,13 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
       <Container>
         <Background
           back={
-            detail.backdrop_path
-              ? `https://image.tmdb.org/t/p/original/${detail.backdrop_path}`
-              : noBack
+            detail.backdrop_path ? `${BASE_URL}${detail.backdrop_path}` : noBack
           }
         />
         <Content>
           <Poster
             poster={
-              detail.poster_path
-                ? `https://image.tmdb.org/t/p/original/${detail.poster_path}`
-                : noPoster
+              detail.poster_path ? `${BASE_URL}${detail.poster_path}` : noPoster
             }
           />
           <Description>
@@ -168,32 +154,56 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
                     ? detail.release_date.substring(0, 4)
                     : detail.first_air_date.substring(0, 4)}
                 </Item>
-                <Divider>&nbsp;∙&nbsp;</Divider>
+                <Divider />
                 <Item>
-                  {detail.genres.map((genre, index) =>
-                    index > 0 ? ` ∙ ` + genre.name : genre.name
-                  )}
-                  &nbsp;
+                  <Genre>
+                    {detail.genres.map((genre, index) =>
+                      index > 0 ? ` ∙ ` + genre.name : genre.name
+                    )}
+                    &nbsp;
+                  </Genre>
                 </Item>
-                <Divider>&nbsp;∙&nbsp;</Divider>
+
                 <Item>
-                  {detail.runtime
-                    ? detail.runtime + "m"
-                    : detail.episode_run_time[0] + "m"}
+                  <Runtime>
+                    {detail.runtime ? (
+                      <>
+                        <Divider /> {detail.runtime}m
+                      </>
+                    ) : (
+                      <>
+                        <Divider />
+                        {detail.episode_run_time[0]}m
+                      </>
+                    )}
+                  </Runtime>
                 </Item>
-                <Divider>&nbsp;∙&nbsp;</Divider>
+
                 <Item>
-                  <span aria-label="star">⭐️</span> {detail.vote_average} / 10
+                  <Vote>
+                    {detail.vote_average ? (
+                      <>
+                        <Divider />
+                        <span aria-label="star">⭐️ </span>
+                        <span>{detail.vote_average} / 10</span>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </Vote>
                 </Item>
-                <Divider>&nbsp;∙&nbsp;</Divider>
+
                 {detail.imdb_id ? (
-                  <a
-                    href={`https://www.imdb.com/title/${detail.imdb_id}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <IMDB />
-                  </a>
+                  <>
+                    <Divider />
+                    <a
+                      href={`https://www.imdb.com/title/${detail.imdb_id}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <IMDB />
+                    </a>
+                  </>
                 ) : (
                   ""
                 )}
@@ -203,7 +213,7 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
                 {detail.belongs_to_collection ? (
                   <Card
                     id={detail.belongs_to_collection.id}
-                    poster={`https://image.tmdb.org/t/p/original/${detail.belongs_to_collection.poster_path}`}
+                    poster={`${BASE_URL}${detail.belongs_to_collection.poster_path}`}
                   />
                 ) : (
                   ""
@@ -216,7 +226,7 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
               <VideoContainer>
                 {detail.videos.results.slice(0, 1).map(video => (
                   <Video
-                    id={video.id}
+                    key={video.id}
                     src={`https://www.youtube.com/embed/${video.key}`}
                     allow={"fullscreen"}
                   />
