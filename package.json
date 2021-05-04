@@ -32,7 +32,6 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://fundevca.github.io/wowflix",
   "browserslist": {
     "production": [
       ">0.2%",
