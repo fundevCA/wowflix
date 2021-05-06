@@ -147,67 +147,72 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
           <Description>
             <TextContainer>
               <Title>{isMovie ? detail.original_title : detail.name}</Title>
-              <ItemContainer>
-                <Item>
-                  {" "}
-                  {isMovie
-                    ? detail.release_date.substring(0, 4)
-                    : detail.first_air_date.substring(0, 4)}
-                </Item>
-                <Divider />
-                <Item>
-                  <Genre>
-                    {detail.genres.map((genre, index) =>
-                      index > 0 ? ` ∙ ` + genre.name : genre.name
-                    )}
-                    &nbsp;
-                  </Genre>
-                </Item>
+              {detail.status === "Planned" || detail.status === "Rumored" ? (
+                ""
+              ) : (
+                <ItemContainer>
+                  <Item>
+                    {" "}
+                    {isMovie
+                      ? detail.release_date.substring(0, 4)
+                      : detail.first_air_date.substring(0, 4)}
+                  </Item>
+                  <Divider />
+                  <Item>
+                    <Genre>
+                      {detail.genres.map((genre, index) =>
+                        index > 0 ? ` ∙ ` + genre.name : genre.name
+                      )}
+                      &nbsp;
+                    </Genre>
+                  </Item>
 
-                <Item>
-                  <Runtime>
-                    {detail.runtime ? (
-                      <>
-                        <Divider /> {detail.runtime}m
-                      </>
-                    ) : (
-                      <>
-                        <Divider />
-                        {detail.episode_run_time[0]}m
-                      </>
-                    )}
-                  </Runtime>
-                </Item>
+                  <Item>
+                    <Runtime>
+                      {detail.runtime ? (
+                        <>
+                          <Divider /> {detail.runtime}m
+                        </>
+                      ) : (
+                        <>
+                          <Divider />
+                          {detail.episode_run_time[0]}m
+                        </>
+                      )}
+                    </Runtime>
+                  </Item>
 
-                <Item>
-                  <Vote>
-                    {detail.vote_average ? (
-                      <>
-                        <Divider />
-                        <span aria-label="star">⭐️ </span>
-                        <span>{detail.vote_average} / 10</span>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </Vote>
-                </Item>
+                  <Item>
+                    <Vote>
+                      {detail.vote_average ? (
+                        <>
+                          <Divider />
+                          <span aria-label="star">⭐️ </span>
+                          <span>{detail.vote_average} / 10</span>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </Vote>
+                  </Item>
 
-                {detail.imdb_id ? (
-                  <>
-                    <Divider />
-                    <a
-                      href={`https://www.imdb.com/title/${detail.imdb_id}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <IMDB />
-                    </a>
-                  </>
-                ) : (
-                  ""
-                )}
-              </ItemContainer>
+                  {detail.imdb_id ? (
+                    <>
+                      <Divider />
+                      <a
+                        href={`https://www.imdb.com/title/${detail.imdb_id}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <IMDB />
+                      </a>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </ItemContainer>
+              )}
+
               <ItemContainer>
                 <Tagline>{detail.tagline} </Tagline>{" "}
                 {detail.belongs_to_collection ? (
