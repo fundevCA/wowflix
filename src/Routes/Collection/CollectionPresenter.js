@@ -7,6 +7,7 @@ import CollectionCard from "../../Components/CollectionCard";
 import Collection from "../../Components/Collection";
 import noPoster from "../../Assets/no_poster.png";
 import noBack from "../../Assets/no_background.jpeg";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
   position: relative;
@@ -51,32 +52,37 @@ const CollectionPresenter = ({ detail, isLoading, error }) =>
   isLoading ? (
     <Loader />
   ) : (
-    <Container>
-      <BackPoster
-        back={
-          detail.backdrop_path ? `${BASE_URL}${detail.backdrop_path}` : noBack
-        }
-      />
-      <Content>
-        <Item>
-          <Title>{detail.name}</Title>
-          <Card id={detail.id} poster={BASE_URL + detail.poster_path} />
-        </Item>
-        <Collections>
-          {detail.parts
-            ? detail.parts.map(collection => (
-                <CollectionPoster
-                  key={collection.id}
-                  id={collection.id}
-                  title={collection.title}
-                  poster={collection.poster_path}
-                  date={collection.release_date}
-                />
-              ))
-            : ""}
-        </Collections>
-      </Content>
-    </Container>
+    <>
+      <Helmet>
+        <title>{detail.name}</title>
+      </Helmet>
+      <Container>
+        <BackPoster
+          back={
+            detail.backdrop_path ? `${BASE_URL}${detail.backdrop_path}` : noBack
+          }
+        />
+        <Content>
+          <Item>
+            <Title>{detail.name}</Title>
+            <Card id={detail.id} poster={BASE_URL + detail.poster_path} />
+          </Item>
+          <Collections>
+            {detail.parts
+              ? detail.parts.map(collection => (
+                  <CollectionPoster
+                    key={collection.id}
+                    id={collection.id}
+                    title={collection.title}
+                    poster={collection.poster_path}
+                    date={collection.release_date}
+                  />
+                ))
+              : ""}
+          </Collections>
+        </Content>
+      </Container>
+    </>
   );
 
 CollectionPresenter.propTypes = {
