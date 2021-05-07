@@ -1,21 +1,25 @@
 # [WOWFLIX](https://upbeat-allen-f26989.netlify.app/#/)
 
-### Movie & TV Application to search and get information
+#### Movie & TV Application to search and get information
 Click [Here](https://upbeat-allen-f26989.netlify.app/#/) to see my application
 
 
 
-##### Tech Stack for this Project
+#### Tech Stack for this Project
 
 Language: Javascript
 Library: React(Create-react-app), Axios, Prop-types, Styled-component, Helmet
 Deploy: Netlify
 
 
+
+
 #### Using Container Presenter Pattern
 
 Container will have all the data, state and calls the API
 Presenter will show the data ( Just a functional component )
+
+
 
 
 ### Home / TV Screen to show each Section ( Now playing, Popular... )
