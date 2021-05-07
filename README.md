@@ -40,4 +40,11 @@ Presenter will show the data ( Just a functional component )
 - [x] Collections Link (Lord of the Rings, Harry Potter...)
 - [x] Show seasons for TV
 
-<img width="1588" alt="Screen Shot 2021-05-06 at 10 17 11 PM" src="https://user-images.githubusercontent.com/80735153/117390212-bbee3500-aebb-11eb-981b-b81f40bcc5e5.png">
+
+## Home / TV Screen to show each Section ( Now playing, Popular... )
+
+## Detail Screen to show the information( Year, Genre, YouTube Trailer... )
+
+
+
+
