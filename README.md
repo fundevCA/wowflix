@@ -35,7 +35,7 @@ Presenter will show the data ( Just a functional component )
 
 ### Detail
 
-- [] IMDB Link
-- [] Youtube Video
-- [] Collections Link
-- [] Show seasons for TV
+- [x] IMDB Link
+- [x] Youtube Video
+- [x] Collections Link (Lord of the Rings, Harry Potter...)
+- [x] Show seasons for TV
