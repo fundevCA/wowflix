@@ -3,7 +3,7 @@
 #### Movie & TV Application to search and get information
 Click [Here](https://upbeat-allen-f26989.netlify.app/#/) to see my application
 
-
+<br><br><br><br>
 
 #### Tech Stack for this Project
 
