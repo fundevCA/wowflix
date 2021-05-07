@@ -4,6 +4,7 @@
 Click [Here](https://upbeat-allen-f26989.netlify.app/#/) to see my application
 
 
+
 ##### Tech Stack for this Project
 
 Language: Javascript
@@ -73,5 +74,5 @@ Presenter will show the data ( Just a functional component )
 
 
 ## Any Comment will be appreciated!
-## Thank you for your time
+## Have a wonderful day
 
