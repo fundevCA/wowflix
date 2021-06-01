@@ -14,7 +14,7 @@ const BASE_URL = "https://image.tmdb.org/t/p/original/";
 const Container = styled.div`
   position: relative;
   width: 100vw;
-  height: calc(100vh - 4.5rem);
+  height: 90vh;
   padding: 3rem;
 `;
 const Background = styled(BackPoster)``;
@@ -38,18 +38,18 @@ const Poster = styled.div`
   flex-wrap: wrap;
 `;
 const Description = styled.div`
-  width: 70%;
-  height: 100%;
+  width: 60%;
+  height: 95%;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+
   padding-left: 4rem;
   font-size: 1.5rem;
   z-index: 1;
   justify-content: space-between;
 `;
 const TextContainer = styled.div`
-  /* height: 100%; */
+  height: 40%;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -106,10 +106,9 @@ const Overview = styled.p`
   line-height: 1.2;
 `;
 const VideoContainer = styled.div`
-  width: 80%;
-  height: 60%;
+  width: 100%;
+  height: 100%;
   display: flex;
-  overflow-y: scroll;
 `;
 const Video = styled.iframe`
   margin-right: 1rem;

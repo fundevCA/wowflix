@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import TVPresenter from "./TVPresenter";
 import { tvAPI } from "../../Components/API";
 
-class TVContainer extends Component {
+class TVContainer extends PureComponent {
   state = {
     airingToday: null,
     popular: null,

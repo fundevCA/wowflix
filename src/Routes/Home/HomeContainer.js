@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import HomePresenter from "./HomePresenter";
 import { movieAPI } from "../../Components/API";
 
-class HomeContainer extends Component {
+class HomeContainer extends PureComponent {
   state = {
     nowPlaying: null,
     popular: null,

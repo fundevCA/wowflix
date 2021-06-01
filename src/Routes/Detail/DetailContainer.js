@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import DetailPresenter from "./DetailPresenter";
 import { movieAPI, tvAPI } from "../../Components/API";
 
-class DetailContainer extends Component {
+class DetailContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

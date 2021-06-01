@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import CollectionPresenter from "./CollectionPresenter";
 import { collectionAPI } from "../../Components/API";
 
-class CollectionContainer extends Component {
+class CollectionContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

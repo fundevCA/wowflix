@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import SearchPresenter from "./SearchPresenter";
 import { movieAPI, tvAPI } from "../../Components/API";
 
-class SearchContainer extends Component {
+class SearchContainer extends PureComponent {
   state = {
     searchMovie: null,
     searchTV: null,
