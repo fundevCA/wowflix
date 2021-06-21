@@ -1,11 +1,13 @@
 import React from "react";
 import { HashRouter, Route, Switch } from "react-router-dom";
-import Home from "../Routes/Home";
-import Detail from "../Routes/Detail";
-import Search from "../Routes/Search";
-import TV from "../Routes/TV";
-import Header from "./Header";
-import Collection from "../Routes/Collection";
+import loadable from "@loadable/component";
+
+const Home = loadable(() => import("../Routes/Home"));
+const Detail = loadable(() => import("../Routes/Detail"));
+const Search = loadable(() => import("../Routes/Search"));
+const TV = loadable(() => import("../Routes/TV"));
+const Header = loadable(() => import("./Header"));
+const Collection = loadable(() => import("../Routes/Collection"));
 
 const Router = () => {
   return (

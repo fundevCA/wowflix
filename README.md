@@ -1,6 +1,7 @@
 # [WOWFLIX](https://upbeat-allen-f26989.netlify.app/#/)
 
 #### Movie & TV Application to search and get information
+
 Click [Here](https://upbeat-allen-f26989.netlify.app/#/) to see my application
 <br><br>
 
@@ -35,9 +36,6 @@ Presenter will show the data ( Just a functional component )
 
 <img width="1500" alt="Screen Shot 2021-05-07 at 12 04 59 AM" src="https://user-images.githubusercontent.com/80735153/117396444-ff4ea080-aec7-11eb-9050-e764bc67e053.png"><br><br>
 
-
-
-
 ## Screens
 
 - [x] Home
@@ -71,7 +69,6 @@ Presenter will show the data ( Just a functional component )
 - [x] Collections Link (Lord of the Rings, Harry Potter...)
 - [x] Show seasons for TV
 
-
 ## Any Comment will be appreciated!
-## Have a wonderful day
 
+## Have a wonderful day
