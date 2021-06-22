@@ -7,6 +7,10 @@ const Ul = styled.ul`
   flex-wrap: wrap;
   width: 100%;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const List = styled.li`
   margin: 1.2em 1.4em;
