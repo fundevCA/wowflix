@@ -52,10 +52,8 @@ const TextContainer = styled.div`
   height: 40%;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   margin-bottom: 1rem;
-  > span {
-    margin-bottom: 1.5rem;
-  }
 `;
 const Title = styled.h3`
   font-size: 3rem;
@@ -64,7 +62,6 @@ const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1rem;
-  margin: 1rem 0;
   flex-wrap: wrap;
 `;
 const Item = styled.span``;
@@ -97,14 +94,20 @@ const IMDB = styled.div`
 const Tagline = styled.span`
   font-style: italic;
   font-size: 1.2rem;
-  margin: 1rem 0;
+  /* margin: 0.2rem 0; */
   /* color: grey; */
 `;
 const Overview = styled.p`
-  width: 70%;
+  width: 90%;
   font-size: 1rem;
   line-height: 1.2;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
+
 const VideoContainer = styled.div`
   width: 100%;
   height: 100%;

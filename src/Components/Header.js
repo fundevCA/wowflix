@@ -25,6 +25,9 @@ const List = styled.li`
     cursor: pointer;
   }
   transition: border-bottom 0.5s ease-in-out;
+  @media (max-width: 768px) {
+    margin: 0.3rem;
+  }
 `;
 const glow = keyframes`
     from {

@@ -27,7 +27,6 @@ class CollectionContainer extends PureComponent {
       try {
         ({ data: detail } = await collectionAPI.detail(id));
         this.setState({ detail });
-        console.log(detail);
       } catch {
         this.setState({ error: "Could not find the Collection" });
       } finally {
@@ -38,7 +37,6 @@ class CollectionContainer extends PureComponent {
 
   render() {
     const { detail, isLoading, error } = this.state;
-    console.log(detail);
     return (
       <CollectionPresenter
         detail={detail}
