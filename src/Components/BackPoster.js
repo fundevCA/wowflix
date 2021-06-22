@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
+import noBack from "../Assets/no_background.jpeg";
 
 const Back = styled.div`
   position: absolute;
@@ -8,7 +8,7 @@ const Back = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(${props => props.back});
+  background-image: url(${props => (props.back ? props.back : noBack)});
   background-position: center center;
   background-size: cover;
   filter: blur(3px);
@@ -17,9 +17,5 @@ const Back = styled.div`
 `;
 
 const BackPoster = ({ back }) => <Back back={back} />;
-
-BackPoster.propTypes = {
-  back: PropTypes.string.isRequired
-};
 
 export default BackPoster;

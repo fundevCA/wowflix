@@ -5,8 +5,6 @@ import BackPoster from "../../Components/BackPoster";
 import Loader from "../../Components/Loader";
 import CollectionCard from "../../Components/CollectionCard";
 import Collection from "../../Components/Collection";
-import noPoster from "../../Assets/no_poster.png";
-import noBack from "../../Assets/no_background.jpeg";
 import Helmet from "react-helmet";
 
 const Container = styled.div`
@@ -16,7 +14,6 @@ const Container = styled.div`
 
   padding: 3rem;
 `;
-const Back = styled(BackPoster)``;
 const Content = styled.div`
   height: 100%;
   width: 100%;
@@ -57,11 +54,7 @@ const CollectionPresenter = ({ detail, isLoading, error }) =>
         <title>{detail.name}</title>
       </Helmet>
       <Container>
-        <BackPoster
-          back={
-            detail.backdrop_path ? `${BASE_URL}${detail.backdrop_path}` : noBack
-          }
-        />
+        <BackPoster back={`${BASE_URL}${detail.backdrop_path}`} />
         <Content>
           <Item>
             <Title>{detail.name}</Title>

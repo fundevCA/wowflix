@@ -8,7 +8,6 @@ import Poster from "../../Components/Poster";
 import { Helmet } from "react-helmet";
 
 const Container = styled.div``;
-const Title = styled.span``;
 
 const HomePresenter = ({
   nowPlaying,
