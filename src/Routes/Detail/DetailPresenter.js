@@ -16,6 +16,9 @@ const Container = styled.div`
   width: 100vw;
   height: 90vh;
   padding: 3rem;
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 const Background = styled(BackPoster)``;
 
@@ -24,10 +27,21 @@ const Content = styled.div`
   width: 100%;
   display: flex;
   box-sizing: border-box;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 150vh;
+    align-items: center;
+  }
+  & > div {
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
 `;
 const Poster = styled.div`
   width: 30%;
   min-width: 20rem;
+  min-height: 20rem;
   height: 100%;
   background-image: url(${props => props.poster});
   background-position: center center;
@@ -38,15 +52,18 @@ const Poster = styled.div`
   flex-wrap: wrap;
 `;
 const Description = styled.div`
-  width: 60%;
+  width: 80%;
   height: 95%;
   display: flex;
   flex-direction: column;
-
   padding-left: 4rem;
   font-size: 1.5rem;
   z-index: 1;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    height: 100%;
+    padding-left: 0;
+  }
 `;
 const TextContainer = styled.div`
   height: 40%;
@@ -97,7 +114,7 @@ const Tagline = styled.span`
   /* margin: 0.2rem 0; */
   /* color: grey; */
 `;
-const Overview = styled.p`
+const Overview = styled.div`
   width: 90%;
   font-size: 1rem;
   line-height: 1.2;
@@ -106,10 +123,14 @@ const Overview = styled.p`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  /* @media (max-width: 768px) {
+    min-height: 20rem;
+  } */
 `;
 
 const VideoContainer = styled.div`
-  width: 100%;
+  width: 90%;
   height: 100%;
   display: flex;
 `;
@@ -189,7 +210,7 @@ const DetailPresenter = ({ detail, isLoading, error, isMovie }) =>
                       {detail.vote_average ? (
                         <>
                           <Divider />
-                          <span aria-label="star">⭐️ </span>
+                          <span aria-label="star">⭐️ &nbsp;&nbsp;</span>
                           <span>{detail.vote_average} / 10</span>
                         </>
                       ) : (
